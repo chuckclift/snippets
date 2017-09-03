@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Your Posts</title>
+</head>
+<style>
+body {
+    margin:0px;
+    background-color:#222222;
+}
+.content {
+    background-color:black;
+    margin:20px;
+    padding:10px;
+    width:400px;
+}
+.post {
+    padding:4px;
+}
+p {
+    color:orange;
+}
+a {
+    color:orange;
+}
+h1 {
+    color:orange;
+}
+#sitetitle {
+    padding:9px;
+    width:100px;
+}
+label {
+    color:orange;
+}
+ul.topbar {
+    background-color:black;
+    padding:20px;
+    border:5px;
+}
+
+li.topbarItems {
+    display:inline; 
+    float:left;
+    color:orange;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    font-size: 24px;
+    margin:5px;
+}
+</style>
+<body>
+<ul class="topbar">
+    <li class="topbarItems">Snippets</li>
+    <li class="topbarItems">
+
+        {% if user.is_authenticated %}
+            <a href="/logout/">log out</a>
+        {% else %}
+            <a href="/login/">log in</a>
+        {% endif %}
+    <li>
+
+
+</ul>
+<!--
+<div id="topbar">
+    <h1 id="sitetitle">
+        Snippets
+        {% if user.is_authenticated %}
+            <a href="/logout/">log out</a>
+        {% else %}
+            <a href="/login/">log in</a>
+        {% endif %}
+    </h1>
+
+</div>
+-->
+
+
+
+<div class="content" style="float:left;">
+    <h1>Posts</h1>
+    {% if snippets %}
+    {% for s in snippets %}
+        <p class="post">{{ s.content }}</p>
+    {% endfor %}
+    {% else %}
+    <p> You haven't posted anything </p>
+    {% endif %}
+    <form method="POST" action="/create/">
+        {% csrf_token %}
+        <label for="content">post content:</label>
+        <input type="text" name="content" id="content">
+    </form>
+</div>
+<div class="content" style="float:right;">
+    <h1>Tags</h1>
+    <p>#foobar</p>
+    <p>#fizzbuzz</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Your Posts</title>
+</head>
+<style>
+body {
+    margin:0px;
+    background-color:#222222;
+}
+#topbar {
+    background-color:black;
+}
+.content {
+    background-color:black;
+    margin:20px;
+    padding:10px;
+    width:400px;
+}
+.post {
+    padding:4px;
+}
+p {
+    color:orange;
+}
+h1 {
+    color:orange;
+}
+#sitetitle {
+    padding:9px;
+    width:100px;
+}
+label {
+    color:orange;
+}
+</style>
+<body>
+<div id="topbar">
+    <h1 id="sitetitle">fizzbuzz</h1>
+</div>
+<form id="login" method="POST" action="/login/">
+    {% csrf_token %}
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <input type="submit">
+</form>
+</body>
+</html>
